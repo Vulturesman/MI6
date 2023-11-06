@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Alias extends Model
 {
-    use HasFactory;
+    public function person()
+    {
+        return $this->belongsTo(Person::class);
+    }
 }
