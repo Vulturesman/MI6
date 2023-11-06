@@ -15,7 +15,7 @@ html {
     color: white;
     width: 18rem;
 
-   a {
+    a {
         display: block;
         opacity: 0.8;
         margin: 1rem 0;
@@ -54,10 +54,15 @@ html {
     background-position: center;
 }
 
-h1{
+h1 {
     color: white;
     opacity: 0.8;
     margin: 0;
     font-weight: 200;
     font-size: 3rem;
+}
+
+table {
+    color: white;
+    opacity: 0.6;
 }
