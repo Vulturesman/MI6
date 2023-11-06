@@ -10,7 +10,7 @@ export default function People() {
         try {
             const response = await fetch(`http://www.mi6.test/api/people`);
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             setPeople(data);
         } catch (error) {
             console.log(error);
@@ -49,7 +49,6 @@ export default function People() {
                                         <td
                                             onClick={() => {
                                                 setPerson_id(person.id);
-                                                console.log(person_id);
                                             }}
                                         >
                                             {person.name}
@@ -63,7 +62,6 @@ export default function People() {
                         </table>
                     ) : (
                         <>
-                            <h1>Hello</h1>
                             <PersonDetail person_id={person_id} />
                         </>
                     )}

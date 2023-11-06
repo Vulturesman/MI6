@@ -9,7 +9,6 @@ export default function PersonDetail({ person_id }) {
                 `http://www.mi6.test/api/people/${person_id}`
             );
             const data = await response.json();
-            console.log(data);
             setPerson(data);
         } catch (error) {
             console.log(error);
@@ -17,12 +16,22 @@ export default function PersonDetail({ person_id }) {
     };
 
     useEffect(() => {
-        loadData();
-    }, []);
+        if (person_id) {
+            loadData();
+        }
+    }, [person_id]);
 
     return (
         <>
-            <h1>test</h1>
+            <h2>Detail of Interest</h2>
+            {person ? (
+                <div className="suspect">
+                    <h2>This is {person.name}</h2>
+                    <p>This suspect has {person.hair_color} hair.</p>
+                </div>
+            ) : (
+                <p>Decrypting...</p>
+            )}
         </>
     );
 }
