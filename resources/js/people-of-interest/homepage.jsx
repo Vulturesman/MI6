@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PersonDetail from "../people/PersonDetail";
 // import '../../css/homepage.scss'
 export default function Homepage() {
     return (
@@ -18,6 +19,7 @@ export default function Homepage() {
                     <h1>Welcome to MI6</h1>
                 </div>
             </div>
+            <PersonDetail />
         </main>
     );
 }

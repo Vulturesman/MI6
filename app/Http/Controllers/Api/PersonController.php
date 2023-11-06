@@ -15,4 +15,22 @@ class PersonController extends Controller
 
         return $people;
     }
+
+    // public function detail() 
+    // {
+
+    //     $detail = Person::findOrFail();
+        
+
+    // }
+
+    public function show($person_id)
+    {
+
+        $person = Person::findOrFail($person_id);
+        return($person);
+
+        
+    }
 }
+
