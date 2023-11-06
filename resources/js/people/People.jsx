@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function People() {
     const [people, setPeople] = useState([]);
 
-    const loadData = async (page = 1) => {
+    const loadData = async () => {
         try {
             const response = await fetch(`http://www.mi6.test/api/people`);
             const data = await response.json();
