@@ -1,0 +1,63 @@
+body,
+html {
+    height: 100vh;
+    margin: 0;
+}
+
+.page-container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-panel-container {
+    background-color: #163838;
+    font-family: "Cutive Mono", monospace;
+    color: white;
+    width: 18rem;
+
+   a {
+        display: block;
+        opacity: 0.8;
+        margin: 1rem 0;
+        transition: background-color 0.3s ease, opacity 0.3s ease;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 1.5rem;
+        color: white;
+        padding: 1rem 0 1rem 1rem;
+
+        &:hover {
+            background-color: #2b5554;
+            opacity: 1;
+        }
+    }
+}
+
+.logo {
+    width: 5rem;
+    display: block;
+    margin: 1rem auto;
+}
+
+.main-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    background-color: #2b5554;
+    font-family: "Noto Serif Display", serif;
+    background-image: url("/public/mi6-seal-bg.png");
+    background-size: 70% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+h1{
+    color: white;
+    opacity: 0.8;
+    margin: 0;
+    font-weight: 200;
+    font-size: 3rem;
+}
