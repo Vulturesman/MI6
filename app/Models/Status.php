@@ -9,4 +9,8 @@ class Status extends Model
 {
     use HasFactory;
 
+    public function person(){
+        return $this->hasMany(People::class);
+    }
+
 }
