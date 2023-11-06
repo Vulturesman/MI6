@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PersonDetail from "./PersonDetail";
+import { Link } from "react-router-dom";
+
 
 export default function People() {
     const [people, setPeople] = useState([]);
@@ -7,7 +9,7 @@ export default function People() {
 
     const loadData = async () => {
         try {
-            const response = await fetch("http://www.mi6.test/api/people");
+            const response = await fetch(`http://www.mi6.test/api/people`);
             const data = await response.json();
             console.log(data);
             setPeople(data);
@@ -19,15 +21,21 @@ export default function People() {
     useEffect(() => {
         loadData();
     }, []);
+
     return (
-        <>
-            <h2 className="title">People</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Voluptate animi amet nostrum perferendis, odit reiciendis
-                reprehenderit impedit! Eum ad sint perferendis. Et facilis
-                aliquam facere consequuntur quam sunt sed praesentium.
-            </p>
+
+        <main>
+      
+            <div className="page-container">
+                <div className="left-panel-container">
+                    <img className="logo" src="/mi6-seal.png" alt="logo MI6" />
+                    <div className="nav">
+                        <Link to={"/"}>Home</Link>
+                        <Link to={"/people"}>People of interest</Link>
+                    </div>
+                </div>
+
+            <div className="main-container">
             {person_id == null ? (
                 <table>
                     <thead>
@@ -62,6 +70,8 @@ export default function People() {
                     <PersonDetail person_id={person_id} />
                 </>
             )}
-        </>
+              </div>
+           </div>
+        </main>
     );
 }
