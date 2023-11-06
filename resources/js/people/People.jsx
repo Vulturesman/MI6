@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import PersonDetail from "./PersonDetail";
 
 export default function People() {
     const [people, setPeople] = useState([]);
+    const [person_id, setPerson_id] = useState(null);
 
     const loadData = async () => {
         try {
@@ -26,26 +28,40 @@ export default function People() {
                 reprehenderit impedit! Eum ad sint perferendis. Et facilis
                 aliquam facere consequuntur quam sunt sed praesentium.
             </p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Nationality</th>
-                        <th>Occupation</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {people.map((person) => (
-                        <tr key={person.id}>
-                            <td>{person.name}</td>
-                            <td>{person.nationality}</td>
-                            <td>{person.occupation}</td>
-                            <td>{person.status_text}</td>
+            {person_id == null ? (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Nationality</th>
+                            <th>Occupation</th>
+                            <th>Status</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {people.map((person) => (
+                            <tr key={person.id}>
+                                <td
+                                    onClick={() => {
+                                        setPerson_id(person.id);
+                                        console.log(person_id);
+                                    }}
+                                >
+                                    {person.name}
+                                </td>
+                                <td>{person.nationality}</td>
+                                <td>{person.occupation}</td>
+                                <td>{person.status_text}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            ) : (
+                <>
+                    <h1>Hello</h1>
+                    <PersonDetail person_id={person_id} />
+                </>
+            )}
         </>
     );
 }

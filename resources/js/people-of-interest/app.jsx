@@ -2,6 +2,7 @@ import React from "react";
 import Homepage from "./homepage";
 import People from "../people/people";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 export default function App() {
     return (
         <BrowserRouter>
