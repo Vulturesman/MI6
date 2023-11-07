@@ -118,10 +118,10 @@ class MissionsSeeder extends Seeder
 
         foreach ($missions as $item) {
 
-                $mission = new Mission();
-                $mission->name = $item['name'];
-                $mission->year = $item['year'];
-                $mission->save();    
+            $mission = new Mission();
+            $mission->name = $item['name'];
+            $mission->year = $item['year'];
+            $mission->save();
         }
     }
 }
