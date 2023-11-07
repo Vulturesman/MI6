@@ -10,7 +10,10 @@ class PersonController extends Controller
 {
     public function index()
     {
-        $people = Person::get();
+        // $people = Person::get();
+
+        $perPage = 10;
+        $people = Person::paginate($perPage);
 
 
         return $people;
