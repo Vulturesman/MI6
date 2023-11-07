@@ -11,6 +11,9 @@ export default function People() {
         lastPage: 1,
     });
     const [person_id, setPerson_id] = useState(null);
+    const [selectedStatus, setSelectedStatus] = useState("");
+
+    // ***********end of States*********************
 
     const loadData = async (page = 1) => {
         try {
@@ -58,6 +61,10 @@ export default function People() {
                 </div>
 
                 <div className="main-container">
+                    <StatusFilter
+                        selectedStatus={selectedStatus}
+                        setSelectedStatus={setSelectedStatus}
+                    />
                     {person_id == null ? (
                         <>
                             <table>
@@ -85,8 +92,6 @@ export default function People() {
                                     ))}
                                 </tbody>
                             </table>
-
-                            <StatusFilter />
 
                             <div className="pagination">
                                 <button
