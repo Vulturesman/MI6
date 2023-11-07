@@ -18,9 +18,7 @@ export default function People() {
     const loadData = async (page = 1) => {
         try {
             const response = await fetch(
-                `http://www.mi6.test/api/people?page=${page}&status=${encodeURIComponent(
-                    selectedStatus
-                )}`
+                `http://www.mi6.test/api/people?page=${page}`
             );
             const data = await response.json();
             setPeople(data.data);
@@ -35,7 +33,7 @@ export default function People() {
 
     useEffect(() => {
         loadData(currentPage);
-    }, [currentPage, selectedStatus]);
+    }, [currentPage]);
 
     const goToNextPage = () => {
         setCurrentPage((prevCurrentPage) => prevCurrentPage + 1);

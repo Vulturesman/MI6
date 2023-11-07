@@ -2,6 +2,7 @@ import React from "react";
 import Homepage from "./homepage";
 import People from "../people/People";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Missions from "../Missions/Missions";
 
 export default function App() {
     return (
@@ -9,6 +10,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/people" element={<People />} />
+                <Route path="/missions" element={<Missions />} />
             </Routes>
         </BrowserRouter>
     );

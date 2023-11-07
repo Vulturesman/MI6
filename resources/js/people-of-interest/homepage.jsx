@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PersonDetail from "../people/PersonDetail";
 // import '../../css/homepage.scss'
+
 export default function Homepage() {
     return (
         <main>
@@ -11,6 +12,7 @@ export default function Homepage() {
                     <div className="nav">
                         <Link to={"/"}>Home</Link>
                         <Link to={"/people"}>People of interest</Link>
+                        <Link to={"/missions"}>Missions</Link>
                     </div>
                     <span className="sidenav__arrow"></span>
                 </div>
