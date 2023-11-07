@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PersonDetail from "./PersonDetail";
 import { Link } from "react-router-dom";
+import StatusFilter from "./StatusFilter";
 
 export default function People() {
     const [people, setPeople] = useState([]);
@@ -84,6 +85,9 @@ export default function People() {
                                     ))}
                                 </tbody>
                             </table>
+
+                            <StatusFilter />
+
                             <div className="pagination">
                                 <button
                                     onClick={goToPreviousPage}
