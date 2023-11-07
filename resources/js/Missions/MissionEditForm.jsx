@@ -20,7 +20,8 @@ export default function MissionEditForm({ missionId, setMissionId }) {
     }, [missionId]);
     return (
         <>
-            <h1>Edit mission{missionDetails.name}</h1>
+            <h1>Edit mission{missionDetails.id}</h1>
+            <button onClick={ () => setMissionId(null) }>&times;</button>
         </>
     );
 }
