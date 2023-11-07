@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function StatusFilter() {
+export default function StatusFilter({ selectedStatus, setSelectedStatus }) {
     const [statuses, setStatuses] = useState([]);
 
     const loadStatuses = async () => {
@@ -22,9 +22,13 @@ export default function StatusFilter() {
         <>
             <div className="status-filter">This is the status filter</div>
             {statuses.map((status) => (
-                <div key={status.id} className="status">
+                <button
+                    onClick={() => setSelectedStatus(status.id)}
+                    key={status.id}
+                    className="status"
+                >
                     {status.name}
-                </div>
+                </button>
             ))}
         </>
     );
