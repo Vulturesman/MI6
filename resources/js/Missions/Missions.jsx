@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import MissionEditForm from "./MissionEditForm";
 import axios from "axios";
 
 export default function Missions() {
     const [missions, setMissions] = useState([]);
+    const [missionId, setMissionId] = useState(null);
 
     const loadMissions = async () => {
         const response = await axios.get("/api/missions");
@@ -31,33 +33,49 @@ export default function Missions() {
 
                 <div className="main-container">
                     <h1>Your Missions</h1>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Year</th>
-                                <th>People</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {missions.map((mission) => (
-                                <tr key={mission.id}>
-                                    <td>{mission.name}</td>
-                                    <td>{mission.year}</td>
-                                    <td>
-                                        <ul>
-                                            {mission.people.map((person) => (
-                                                <li key={person.id}>
-                                                    {" "}
-                                                    {person.name}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </td>
+                    {missionId == null ? (
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Year</th>
+                                    <th>People</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {missions.map((mission) => (
+                                    <tr key={mission.id}>
+                                        <td
+                                            onClick={
+                                                () => setMissionId(mission.id)
+                                                // console.log(mission.id)
+                                            }
+                                        >
+                                            {mission.name}
+                                        </td>
+                                        <td>{mission.year}</td>
+                                        <td>
+                                            <ul>
+                                                {mission.people.map(
+                                                    (person) => (
+                                                        <li key={person.id}>
+                                                            {" "}
+                                                            {person.name}
+                                                        </li>
+                                                    )
+                                                )}
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    ) : (
+                        <MissionEditForm
+                            missionId={missionId}
+                            setMissionId={setMissionId}
+                        />
+                    )}
                 </div>
             </div>
         </main>
