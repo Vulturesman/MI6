@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 
 use App\Models\Alias;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\Image;
 use App\Models\Person;
 use App\Models\Status;
