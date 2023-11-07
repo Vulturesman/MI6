@@ -8,12 +8,20 @@ use Illuminate\Http\Request;
 
 class PersonController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+
+        $status = $request->query('status');
         // $people = Person::get();
 
         $perPage = 10;
-        $people = Person::paginate($perPage);
+
+        if ($status) {
+            $people = Person::where('status_id', $status)
+                ->paginate($perPage);
+        } else {
+            $people = Person::paginate($perPage);
+        }
 
 
         return $people;
