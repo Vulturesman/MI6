@@ -57,6 +57,7 @@ export default function People() {
                     <div className="nav">
                         <Link to={"/"}>Home</Link>
                         <Link to={"/people"}>People of interest</Link>
+                        <Link to={"/missions"}>Missions</Link>
                     </div>
                 </div>
 
