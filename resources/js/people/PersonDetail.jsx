@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function PersonDetail({ person_id }) {
     const [person, setPerson] = useState(null);
@@ -32,6 +33,7 @@ export default function PersonDetail({ person_id }) {
             ) : (
                 <p>Decrypting...</p>
             )}
+            <Link to={"/"}><button>Home</button></Link>
         </>
     );
 }
