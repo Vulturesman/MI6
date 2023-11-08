@@ -34,4 +34,3 @@ Route::get('/missions/{mission_id}', [MissionController::class, "show"])->name("
 
 Route::post('/missions/{mission_id}/store', [MissionController::class, "store"])->name("mission.store");
 
-Route::view('/{path?}', 'homepage')->where('path', '.*');

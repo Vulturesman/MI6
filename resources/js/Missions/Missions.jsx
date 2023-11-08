@@ -30,6 +30,7 @@ export default function Missions() {
                     </div>
                     <span className="sidenav__arrow"></span>
                 </div>
+                {/* <Navigation /> */}
 
                 <div className="main-container">
                     <h1>Your Missions</h1>
