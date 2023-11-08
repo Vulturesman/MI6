@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default function MissionEditForm({ missionId, setMissionId }) {
     const [missionDetails, setMissionDetails] = useState("");
-    const [message, setMessage] = useState("");
+    const [message, setMessage] = useState(null);
 
     const loadMission = async () => {
         try {
@@ -23,12 +23,6 @@ export default function MissionEditForm({ missionId, setMissionId }) {
 
     // *** Handling the form ***
 
-    // const [values, setValues] = useState({
-    //     name: '',
-    //     year: '',
-    //     outcome: '',
-    // });
-
     const handleChange = (event) => {
         setMissionDetails((previous_values) => {
             return {
@@ -38,13 +32,13 @@ export default function MissionEditForm({ missionId, setMissionId }) {
         });
     };
 
-    // **********SUUBMIT THE FORM***************
-
     const sendData = async (e) => {
         e.preventDefault();
+
+        // with axios:
         try {
             const response = await axios.post(
-                `api/missions/${missionId}/store`,
+                `missions/${missionId}/store`,
                 missionDetails
             );
             setMessage(response.data["message"]);
@@ -53,11 +47,32 @@ export default function MissionEditForm({ missionId, setMissionId }) {
         }
     };
 
+    // with fetch - probably doesnt work here - editional adjustment needed
+    // try {
+    //     const response = await fetch(`missions/${missionId}/store`, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-type': 'application/json',
+    //             'Accept': 'application/json',
+    //             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    //         },
+    //         body: JSON.stringify(mission)
+    //     });
+    //     const data = await response.json();
+    //     setMessage(data['message'])
+    // } catch (error) {
+    //     console.log(error)
+    // }
+    // }
+
+    // *** END of Handling the form ***
+
     return (
         <>
-            <h1>Edit mission{missionDetails.id}</h1>
+            <h1>Edit mission number: {missionDetails.id}</h1>
             {missionDetails && (
                 <div className="mission_form">
+                    {message ? <span>{message}</span> : ""}
                     <form action="" onSubmit={sendData}>
                         <label htmlFor="name">Name:</label>
                         <input
@@ -86,7 +101,7 @@ export default function MissionEditForm({ missionId, setMissionId }) {
                         >
                             <option value={true}>Succesfull</option>
                             <option value={false}>Failed</option>
-                            <option value={null}>Ongoing</option>
+                            <option value={"ongoing"}>Ongoing</option>
                         </select>
 
                         <button type="submit">Update</button>

@@ -24,25 +24,27 @@ class MissionController extends Controller
 
     public function store(Request $request, $mission_id)
     {
-        try {
-            $request->validate([
-                'name' => 'required',
-                'year' => 'required'
-            ]);
 
-            $mission = Mission::with("people")->findOrFail($mission_id);
-            if (!$mission) {
-                return ['message' => "Mission not found"];
-            }
-            $mission->name = $request->input('name');
-            $mission->year = $request->input('year');
-            $mission->outcome = $request->input('outcome');
-            $mission->save();
+        $request->validate([
+            'name' => 'required',
+            'year' => 'required',
+        ]);
 
-            return ['message' => "Misson updated successfuly"];
-        } catch (\Exception $e) {
-            \Log::error($e);
-            return response()->json(['message' => 'An error occurred'], 500);
+        $mission = Mission::with('people')->find($mission_id);
+
+        if (!$mission) {
+            return [
+                'message' => 'Mission not found :('
+            ];
         }
+
+        $mission->name = $request->input('name');
+        $mission->year = $request->input('year');
+        $mission->outcome = $request->input('outcome');
+        $mission->save();
+
+        return [
+            'message' => 'Mission updated successfully!'
+        ];
     }
 }

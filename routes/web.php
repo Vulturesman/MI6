@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\MissionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('homepage');
 });
+
+Route::post('/missions/{mission_id}/store', [MissionController::class, "store"])->name("mission.store");
