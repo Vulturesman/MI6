@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Mission;
 use Illuminate\Http\Request;
+use App\Mail\SendMissionDetails;
+use Illuminate\Support\Facades\Mail;
+use App\Models\User;
 
 class MissionController extends Controller
 {
@@ -19,10 +22,11 @@ class MissionController extends Controller
     {
         $mission = Mission::with('people')->findOrFail($mission_id);
 
-        return($mission);
+        return ($mission);
     }
 
-    public function store(Request $request, $mission_id){
+    public function store(Request $request, $mission_id)
+    {
 
         $request->validate([
             'name' => 'required',
@@ -45,5 +49,19 @@ class MissionController extends Controller
         return [
             'message' => 'Mission updated successfully!'
         ];
+    }
+    public function sendMissionDetails(Request $request)
+    {
+        $mission = Mission::with('people')->findOrFail($request->mission_id);
+
+        // $user = $request->user_id; without user authrentication
+        // $user = User::findOrFail($request->user_id);
+        $user = auth()->user();
+
+        Mail::to($user->email())
+            // ->cc('copy@example.com')
+            // ->bcc('hidden_copy@example.com')
+            ->send(new SendMissionDetails($mission));
+
     }
 }

@@ -18,6 +18,19 @@ export default function Missions() {
         loadMissions();
     }, []);
 
+    const sendMail = async (missionId) => {
+        const response = axios.post("/api/send-missions", missionId);
+    };
+
+    // const sendMail = async() => {
+    //     const response = fetch("api/send-missions", {
+    //         method:POST,
+    //         headers: {
+    //             'content-type'
+    //         ...........
+    //         }
+    //     })
+
     return (
         <main>
             <div className="page-container">
@@ -67,6 +80,16 @@ export default function Missions() {
                                                     )
                                                 )}
                                             </ul>
+                                        </td>
+                                        <td>
+                                            <button
+                                                onClick={() => {
+                                                    console.log(mission.id);
+                                                    sendMail(mission.id);
+                                                }}
+                                            >
+                                                Send to my mail
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}
