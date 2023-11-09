@@ -17,6 +17,7 @@ export default function Homepage() {
                         <Link to={"/"}>Home</Link>
                         <Link to={"/people"}>People of interest</Link>
                         <Link to={"/missions"}>Missions</Link>
+                        <Link to={"/register"}>Register</Link>
                     </div>
                     <span className="sidenav__arrow"></span>
                 </div> */}
