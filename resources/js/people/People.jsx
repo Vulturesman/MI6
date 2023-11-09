@@ -18,7 +18,9 @@ export default function People() {
     const loadData = async (page = 1) => {
         try {
             const response = await fetch(
-                `http://www.mi6.test/api/people?page=${page}&status=${encodeURIComponent(selectedStatus)}`
+                `http://www.mi6.test/api/people?page=${page}&status=${encodeURIComponent(
+                    selectedStatus
+                )}`
             );
             const data = await response.json();
             setPeople(data.data);
@@ -58,6 +60,7 @@ export default function People() {
                         <Link to={"/"}>Home</Link>
                         <Link to={"/people"}>People of interest</Link>
                         <Link to={"/missions"}>Missions</Link>
+                        <Link to={"/register-form"}>Register</Link>
                     </div>
                 </div>
 
