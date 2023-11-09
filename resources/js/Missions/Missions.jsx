@@ -18,8 +18,10 @@ export default function Missions() {
         loadMissions();
     }, []);
 
-    const sendMail = async (missionId) => {
-        const response = axios.post("/api/send-missions", missionId);
+    const sendMail = async (mission_id) => {
+        const response = axios.post("/api/send-mission", {
+            mission_id: mission_id,
+        });
     };
 
     // const sendMail = async() => {

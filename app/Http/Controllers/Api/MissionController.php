@@ -58,7 +58,7 @@ class MissionController extends Controller
         // $user = User::findOrFail($request->user_id);
         $user = auth()->user();
 
-        Mail::to($user->email())
+        Mail::to("test@test.com")
             // ->cc('copy@example.com')
             // ->bcc('hidden_copy@example.com')
             ->send(new SendMissionDetails($mission));
