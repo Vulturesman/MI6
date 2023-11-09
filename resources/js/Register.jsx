@@ -28,6 +28,8 @@ export default function Register(props) {
         // parse the response as JSON
         const response_data = await response.json();
 
+        console.log(response_data);
+
         // if the response code is not 2xx (success)
         if (Math.floor(response.status / 100) !== 2) {
             switch (response.status) {
@@ -79,7 +81,7 @@ export default function Register(props) {
                         <Link to={"/"}>Home</Link>
                         <Link to={"/people"}>People of interest</Link>
                         <Link to={"/missions"}>Missions</Link>
-                        <Link to={"/register-form"}>Register</Link>
+                        <Link to={"/register"}>Register</Link>
                     </div>
                 </div>
 
