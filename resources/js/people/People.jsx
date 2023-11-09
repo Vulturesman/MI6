@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PersonDetail from "./PersonDetail";
 import { Link } from "react-router-dom";
 import StatusFilter from "./StatusFilter";
+import Navigation from "../people-of-interest/components/navigation ";
 
 export default function People() {
     const [people, setPeople] = useState([]);
@@ -18,7 +19,9 @@ export default function People() {
     const loadData = async (page = 1) => {
         try {
             const response = await fetch(
-                `http://www.mi6.test/api/people?page=${page}&status=${encodeURIComponent(selectedStatus)}`
+                `http://www.mi6.test/api/people?page=${page}&status=${encodeURIComponent(
+                    selectedStatus
+                )}`
             );
             const data = await response.json();
             setPeople(data.data);
@@ -58,9 +61,10 @@ export default function People() {
                         <Link to={"/"}>Home</Link>
                         <Link to={"/people"}>People of interest</Link>
                         <Link to={"/missions"}>Missions</Link>
+                        <Link to={"/register-form"}>Register</Link>
                     </div>
                 </div>
-
+                {/* <Navigation /> */}
                 <div className="main-container">
                     <StatusFilter
                         selectedStatus={selectedStatus}

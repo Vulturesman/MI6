@@ -21,13 +21,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::get('/people', [PersonController::class, "index"])->name("people");
 
-Route::get('/people/{person_id}', [PersonController::class, "show"])->name("person-detail");
+Route::get('/people/{person_id}', [PersonController::class, "show"])->name("person.detail");
 
 Route::get('/statuses', [StatusController::class, "index"])->name("statuses");
 
 Route::get('/missions', [MissionController::class, "index"])->name("missions");
 
-Route::get('/missions/{mission_id}', [MissionController::class, "show"])->name("mission-detail");
+Route::get('/missions/{mission_id}', [MissionController::class, "show"])->name("mission.detail");
+
+Route::post('/missions/{mission_id}/store', [MissionController::class, "store"])->name("mission.store");
 
