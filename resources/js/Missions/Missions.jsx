@@ -18,6 +18,10 @@ export default function Missions() {
         loadMissions();
     }, []);
 
+    // const sendMission = async () => {
+    //     const response = fetch("/api/send-mission");
+    // };
+
     return (
         <main>
             <div className="page-container">
@@ -41,6 +45,7 @@ export default function Missions() {
                                     <th>Name</th>
                                     <th>Year</th>
                                     <th>People</th>
+                                    <th>Send to my Email</th>
                                 </tr>
                             </thead>
                             <tbody>

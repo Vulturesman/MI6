@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Mission;
 use Illuminate\Http\Request;
+use App\Mail\SendMissionDetails;
+use Illuminate\Support\Facades\Mail;
 
 class MissionController extends Controller
 {
@@ -45,5 +47,13 @@ class MissionController extends Controller
         return [
             'message' => 'Mission updated successfully!'
         ];
+    }
+
+    public function sendMissionDetails(Request $request) 
+    {
+        $mission = Mission::findOrFail($request->mission_id);
+        $user = auth()
+        Mail::to();
+        ->send(new SendMissionDetails($mission))
     }
 }

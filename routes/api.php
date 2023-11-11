@@ -31,3 +31,4 @@ Route::get('/missions', [MissionController::class, "index"])->name("missions");
 
 Route::get('/missions/{mission_id}', [MissionController::class, "show"])->name("mission-detail");
 
+Route::post('/send-mission', [MissionController::class, 'sendMissionDetails']);
