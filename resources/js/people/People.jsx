@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PersonDetail from "./PersonDetail";
 import { Link } from "react-router-dom";
 import StatusFilter from "./StatusFilter";
+import Navigation from "../people-of-interest/components/navigation ";
 
 export default function People() {
     const [people, setPeople] = useState([]);
@@ -63,7 +64,7 @@ export default function People() {
                         <Link to={"/register-form"}>Register</Link>
                     </div>
                 </div>
-
+                {/* <Navigation /> */}
                 <div className="main-container">
                     <StatusFilter
                         selectedStatus={selectedStatus}

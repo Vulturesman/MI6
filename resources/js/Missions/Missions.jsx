@@ -18,9 +18,20 @@ export default function Missions() {
         loadMissions();
     }, []);
 
-    // const sendMission = async () => {
-    //     const response = fetch("/api/send-mission");
-    // };
+    const sendMail = async (mission_id) => {
+        const response = axios.post("/api/send-mission", {
+            mission_id: mission_id,
+        });
+    };
+
+    // const sendMail = async() => {
+    //     const response = fetch("api/send-missions", {
+    //         method:POST,
+    //         headers: {
+    //             'content-type'
+    //         ...........
+    //         }
+    //     })
 
     return (
         <main>
@@ -35,6 +46,7 @@ export default function Missions() {
                     </div>
                     <span className="sidenav__arrow"></span>
                 </div>
+                {/* <Navigation /> */}
 
                 <div className="main-container">
                     <h1>Your Missions</h1>
@@ -71,6 +83,16 @@ export default function Missions() {
                                                     )
                                                 )}
                                             </ul>
+                                        </td>
+                                        <td>
+                                            <button
+                                                onClick={() => {
+                                                    console.log(mission.id);
+                                                    sendMail(mission.id);
+                                                }}
+                                            >
+                                                Send to my mail
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}

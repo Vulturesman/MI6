@@ -12,16 +12,10 @@ use Illuminate\Queue\SerializesModels;
 class SendMissionDetails extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $mission;
     /**
-     * 
-     * 
      * Create a new message instance.
      */
-
-    public $mission;
-
-
     public function __construct($mission)
     {
         $this->mission = $mission;
@@ -43,7 +37,7 @@ class SendMissionDetails extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.email',
+            view: 'emails.emails',
         );
     }
 

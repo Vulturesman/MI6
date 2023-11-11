@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('homepage');
-});
+// Route::get('/', function () {
+//     return view('homepage');
+// });
 
-Route::post('/missions/{mission_id}/store', [MissionController::class, "store"])->name("mission.store");
+Route::view('/{path?}', 'homepage')->where('path', '.*');
